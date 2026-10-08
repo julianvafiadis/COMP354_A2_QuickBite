@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QuickBite</title>
+  </head>
+  <body>
+    <main>
+      <h1>QuickBite</h1>
+      <h2>Participating restaurants</h2>
+      <p id="status">Loading restaurants...</p>
+      <ul id="restaurants"></ul>
+    </main>
+    <script type="module">
+      const status = document.querySelector('#status');
+      const list = document.querySelector('#restaurants');
+      try {
+        const response = await fetch('/api/restaurants');
+        if (!response.ok) throw new Error('Could not load restaurants.');
+        const { restaurants } = await response.json();
+        for (const restaurant of restaurants) {
+          const entry = document.createElement('li');
+          entry.textContent = `${restaurant.name} - ${restaurant.cuisine}`;
+          list.append(entry);
+        }
+        status.textContent = `${restaurants.length} restaurants available.`;
+      } catch (error) {
+        status.textContent = error.message;
+      }
+    </script>
+  </body>
+</html>
