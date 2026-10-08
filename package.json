@@ -1,0 +1,13 @@
+{
+  "name": "quickbite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "QuickBite Scrum sprint: restaurant pickup ordering",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
