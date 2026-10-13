@@ -1,0 +1,75 @@
+export const restaurants = [
+  {
+    id: 'basil',
+    name: 'Basil & Brick',
+    cuisine: 'Italian',
+    description: 'Stone-baked favourites. A little taste of the neighbourhood.',
+    address: '1420 Rue Mackay, Montréal',
+    pickupMinutes: 20,
+    open: true,
+  },
+  {
+    id: 'seoul',
+    name: 'Seoul Kitchen',
+    cuisine: 'Korean',
+    description: 'Big flavour, comforting bowls, and a bit of heat.',
+    address: '1650 Rue Sainte-Catherine O, Montréal',
+    pickupMinutes: 15,
+    open: true,
+  },
+  {
+    id: 'green',
+    name: 'The Green Table',
+    cuisine: 'Healthy',
+    description: 'Seasonal ingredients. Bright bowls. Feel-good food.',
+    address: '1210 Rue Guy, Montréal',
+    pickupMinutes: 10,
+    open: true,
+  },
+  {
+    id: 'bun',
+    name: 'Bun Club',
+    cuisine: 'Burgers',
+    description: 'Your favourite smash burgers, made with care.',
+    address: '1345 Boulevard De Maisonneuve O, Montréal',
+    pickupMinutes: 15,
+    open: true,
+  },
+  {
+    id: 'taco',
+    name: 'Casa Taco',
+    cuisine: 'Mexican',
+    description: 'Fresh tortillas and family recipes, every day.',
+    address: '1510 Rue Bishop, Montréal',
+    pickupMinutes: 15,
+    open: false,
+  },
+  {
+    id: 'cafe',
+    name: 'Sunday Café',
+    cuisine: 'Café',
+    description: 'Slow mornings, good coffee, and something sweet.',
+    address: '1280 Rue Crescent, Montréal',
+    pickupMinutes: 10,
+    open: true,
+  },
+];
+
+export const menuItems = [
+  {
+    "id": "basil-margherita",
+    "name": "Margherita",
+    "description": "Tomato, mozzarella and basil.",
+    "priceCents": 1650,
+    "restaurantId": "basil",
+    "available": true
+  },
+  {
+    "id": "seoul-bibimbap",
+    "name": "Bibimbap",
+    "description": "Rice, vegetables, beef and egg.",
+    "priceCents": 1650,
+    "restaurantId": "seoul",
+    "available": true
+  }
+];
