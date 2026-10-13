@@ -1,32 +1,82 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>QuickBite</title>
+    <meta name="theme-color" content="#254f3d" />
+    <title>QuickBite · Good food, on your time</title>
   </head>
   <body>
-    <main>
-      <h1>QuickBite</h1>
-      <h2>Participating restaurants</h2>
-      <p id="status">Loading restaurants...</p>
-      <ul id="restaurants"></ul>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="QuickBite home">
+        QuickBite
+      </a>
+      <span class="location">
+        <span aria-hidden="true">⌖</span>
+        Montréal
+        <span class="location-note">/ Pickup Only</span>
+      </span>
+      <div class="bag-summary">
+        Your bag
+        <span id="bag-count">0</span>
+      </div>
+    </header>
+    <main id="main" class="layout">
+      <div class="main-column">
+        <section id="restaurants-view" aria-labelledby="browse-title">
+          <div class="hero">
+            <h1 id="browse-title">Order food for pickup</h1>
+            <p>Choose a restaurant, select your items, and confirm your order.</p>
+          </div>
+          <div class="browse-heading">
+            <div>
+              <h2>Restaurants</h2>
+            </div>
+            <span id="restaurant-count" class="muted"></span>
+          </div>
+          <div id="restaurant-list" class="restaurant-grid" tabindex="-1" aria-live="polite">
+            <p class="muted">Loading local kitchens…</p>
+          </div>
+        </section>
+        <section id="menu-view" hidden aria-labelledby="menu-title"></section>
+        <section
+          id="confirmation-view"
+          hidden
+          aria-labelledby="confirmation-title"
+        ></section>
+        <footer class="page-footer">
+          <span class="brand-small">QuickBite.</span>
+          <span>Good food. Less waiting.</span>
+          <span>Demo · CAD · Pay at pickup</span>
+        </footer>
+      </div>
+      <aside id="cart-panel" class="cart-panel" aria-labelledby="cart-title">
+        <div class="cart-heading">
+          <h2 id="cart-title" tabindex="-1">Your bag</h2>
+          <span class="eyebrow">PICKUP</span>
+        </div>
+        <div id="cart-content"><p>Your bag is empty.</p></div>
+        <section id="checkout-section" hidden></section>
+      </aside>
     </main>
+    <div id="toast" class="toast" role="status" hidden></div>
     <script type="module">
-      const status = document.querySelector('#status');
-      const list = document.querySelector('#restaurants');
+      const list = document.querySelector('#restaurant-list');
       try {
         const response = await fetch('/api/restaurants');
         if (!response.ok) throw new Error('Could not load restaurants.');
         const { restaurants } = await response.json();
+        document.querySelector('#restaurant-count').textContent =
+          restaurants.length + ' restaurants';
+        list.replaceChildren();
         for (const restaurant of restaurants) {
-          const entry = document.createElement('li');
-          entry.textContent = `${restaurant.name} - ${restaurant.cuisine}`;
-          list.append(entry);
+          const row = document.createElement('p');
+          row.textContent = restaurant.name + ' - ' + restaurant.cuisine;
+          list.append(row);
         }
-        status.textContent = `${restaurants.length} restaurants available.`;
       } catch (error) {
-        status.textContent = error.message;
+        list.textContent = error.message;
       }
     </script>
   </body>
