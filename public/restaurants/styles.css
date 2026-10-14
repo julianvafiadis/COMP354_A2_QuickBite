@@ -1,0 +1,135 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: #eeeedf;
+  border-radius: var(--radius);
+  padding: 38px 34px;
+  margin-bottom: 35px;
+  min-height: 0;
+}
+.hero > .eyebrow {
+  color: #68774d;
+  margin-bottom: 15px;
+}
+.hero h1 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(34px, 3.6vw, 52px);
+  margin-bottom: 18px;
+}
+.hero h1 span {
+  color: #8a9c45;
+}
+.hero > p:not(.eyebrow) {
+  position: relative;
+  z-index: 1;
+  font-size: 13px;
+  max-width: 350px;
+  color: #68705e;
+  margin-bottom: 22px;
+}
+.browse-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+.browse-heading .eyebrow {
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+.browse-heading h2 {
+  margin-bottom: 0;
+}
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.restaurant-card {
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+  transition:
+    transform 0.16s,
+    box-shadow 0.16s;
+}
+.restaurant-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px #203c300a;
+}
+.restaurant-info {
+  padding: 19px 20px;
+}
+.restaurant-info p {
+  font-size: 12px;
+  color: var(--muted);
+  min-height: 38px;
+  margin-bottom: 14px;
+}
+.restaurant-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 10px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+}
+.restaurant-meta span:first-child {
+  color: var(--muted);
+}
+@media (min-width: 1400px) {
+  .hero > p:not(.eyebrow) {
+      max-width: 440px;
+    }
+}
+@media (max-width: 1100px) and (min-width: 901px) {
+  .hero {
+      padding: 30px 25px;
+    }
+  .hero h1 {
+      font-size: 38px;
+    }
+  .restaurant-grid {
+      gap: 15px;
+    }
+  .restaurant-info {
+      padding: 16px;
+    }
+}
+@media (max-width: 600px) {
+  .hero {
+      padding: 28px 22px;
+      min-height: 0;
+    }
+  .hero h1 {
+      font-size: 37px;
+    }
+  .hero > p:not(.eyebrow) {
+      max-width: 270px;
+    }
+  .browse-heading h2 {
+      font-size: 21px;
+    }
+  .restaurant-grid {
+      gap: 14px;
+    }
+  .restaurant-info {
+      padding: 14px;
+    }
+  .restaurant-meta {
+      flex-wrap: wrap;
+    }
+}
+@media (max-width: 400px) {
+  .restaurant-grid {
+      grid-template-columns: 1fr;
+    }
+  .hero h1 {
+      font-size: 32px;
+    }
+}
