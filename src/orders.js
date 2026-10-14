@@ -1,4 +1,6 @@
 import { randomUUID } from 'node:crypto';
+import { restaurants } from './data.js';
+import { ApiError } from './http.js';
 
 export function validateCheckout(cart, input) {
     const name = typeof input.customerName === 'string'
@@ -7,8 +9,9 @@ export function validateCheckout(cart, input) {
     const email = typeof input.customerEmail === 'string'
         ? input.customerEmail.trim()
         : '';
-    if (name.length < 2) throw new Error('Enter your name.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    if (name.length < 2 || name.length > 80)
+        throw new Error('Enter a name between 2 and 80 characters.');
+    if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
         throw new Error('Enter a valid email address.');
     if (!cart.items.length) throw new Error('The cart is empty.');
     const pickup = new Date(input.pickupAt);
@@ -38,3 +41,19 @@ export function createOrder(store, cart, input) {
     store.save(nextState);
     return order;
 }
+
+export function pickupOptions(restaurantId, now = new Date()) {
+    const restaurant = restaurants.find(
+        (restaurant) => restaurant.id === restaurantId,
+    );
+    if (!restaurant) throw new ApiError('Restaurant not found.', 404);
+    if (!restaurant.open) return [];
+    const interval = 15 * 60 * 1000;
+    const first =
+        Math.ceil((now.getTime() + restaurant.pickupMinutes * 60000) / interval) *
+        interval;
+    return Array.from({ length: 8 }, (_, index) =>
+        new Date(first + index * interval).toISOString(),
+    );
+}
+
