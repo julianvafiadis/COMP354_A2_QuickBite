@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QuickBite bag and pickup</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./view.js" defer></script>
+  </head>
+  <body>
+    <h1>Your bag</h1>
+    <p id="cart-restaurant"></p>
+    <div id="cart-items"></div>
+    <p id="cart-total"></p>
+    <section>
+      <h2>Pickup details</h2>
+      <form id="checkout-form">
+        <label>
+          Name
+          <input name="customerName" required minlength="2" />
+        </label>
+        <label>
+          Email
+          <input name="customerEmail" type="email" required />
+        </label>
+        <label>
+          Pickup time
+          <select name="pickupAt" id="pickup-time" required></select>
+        </label>
+        <button type="submit">Review pickup details</button>
+      </form>
+      <p id="pickup-summary" role="status"></p>
+    </section>
+  </body>
+</html>
