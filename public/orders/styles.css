@@ -1,0 +1,161 @@
+#checkout-section {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 23px;
+}
+.checkout-heading h3 {
+  font: normal 23px Georgia;
+  margin-bottom: 10px;
+}
+.checkout-heading p {
+  font-size: 12px;
+  color: var(--muted);
+}
+#checkout-form label {
+  display: block;
+  font-size: 11px;
+  font-weight: 650;
+  margin: 17px 0;
+}
+#checkout-form label[for='pickup-time'] {
+  margin-bottom: 8px;
+}
+#checkout-form input,
+#checkout-form select {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 12px;
+}
+.checkout-note {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.checkout-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  padding: 16px 0;
+  margin-bottom: 10px;
+  border-top: 1px solid var(--line);
+}
+#checkout-form .button {
+  width: 100%;
+  font-size: 12px;
+}
+.cancel-checkout {
+  font-size: 11px;
+  color: var(--muted);
+  width: 100%;
+  text-align: center;
+  margin-top: 14px;
+}
+.confirmation-card {
+  padding: 38px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.success-mark {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  background: #e8eedb;
+  color: var(--green);
+  border-radius: 50%;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+.confirmation-card > .eyebrow {
+  color: #72864f;
+}
+.confirmation-card h1 {
+  font-size: 45px;
+  margin-bottom: 18px;
+}
+.confirmation-card h1 span {
+  color: #92a04c;
+}
+.confirmation-card > p:not(.eyebrow) {
+  font-size: 13px;
+  color: var(--muted);
+}
+.receipt-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin: 30px 0;
+}
+.receipt-meta .eyebrow {
+  font-size: 9px;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+}
+.receipt-meta h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.receipt-meta p {
+  font-size: 11px;
+  color: var(--muted);
+}
+.receipt-number {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.receipt-number code {
+  font-size: 13px;
+  font-weight: 700;
+}
+.receipt-number .status-pill {
+  margin-left: auto;
+  background: #edf1e6;
+}
+.receipt-items {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0;
+}
+.receipt-items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 9px 0;
+  font-size: 12px;
+}
+.confirmation-card > .checkout-note {
+  margin: 19px 0 23px;
+}
+.confirmation-card > .button {
+  width: max-content;
+}
+@media (max-width: 520px) {
+  .confirmation-card {
+      padding: 25px;
+    }
+  .confirmation-card h1 {
+      font-size: 35px;
+    }
+  .receipt-meta {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  .confirmation-card > .button {
+      width: 100%;
+    }
+}
