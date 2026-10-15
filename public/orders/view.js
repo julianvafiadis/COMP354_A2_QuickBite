@@ -159,7 +159,61 @@ export function initOrders() {
     }
   });
   function displayOrder(order) {
-    notify('Order received. Receipt display is added in ET24.');
+    showView('confirmation');
+    confirmation.innerHTML = `
+      <div class="confirmation-card">
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <p class="eyebrow">ORDER RECEIVED</p>
+        <h1 id="confirmation-title" tabindex="-1">
+          Good food is on its way
+          <span>.</span>
+        </h1>
+        <p>Thanks, ${escapeHtml(order.customerName)}. Your pickup order is confirmed.</p>
+        <div class="receipt-meta">
+          <div>
+            <span class="eyebrow">YOUR KITCHEN</span>
+            <h3>${escapeHtml(order.restaurantName)}</h3>
+            <p>${escapeHtml(order.address)}</p>
+          </div>
+          <div>
+            <span class="eyebrow">PICKUP TIME</span>
+            <h3>${escapeHtml(dateTime(order.pickupAt))}</h3>
+            <p>Time shown in your device’s timezone.</p>
+          </div>
+        </div>
+        <div class="receipt-number">
+          <span>Order reference</span>
+          <code>${escapeHtml(order.id.slice(0, 8).toUpperCase())}</code>
+          <span class="status-pill">${escapeHtml(order.status)}</span>
+        </div>
+        <ul class="receipt-items">
+          ${order.items
+            .map(
+              (i) => `
+                <li>
+                  <span>${i.quantity} × ${escapeHtml(i.name)}</span>
+                  <strong>${money(i.priceCents * i.quantity)}</strong>
+                </li>
+              `,
+            )
+            .join('')}
+        </ul>
+        <div class="cart-total">
+          <span>Pay at pickup · CAD</span>
+          <strong>${money(order.totalCents)}</strong>
+        </div>
+        <p class="checkout-note">
+          This is a demo order stored locally. No payment or email has been
+          sent. Staff order processing is planned for a future sprint.
+        </p>
+        <button class="button primary" data-browse-again>
+          Explore more kitchens ↗
+        </button>
+      </div>
+    `;
+    document
+      .querySelector('#confirmation-title')
+      .focus({ preventScroll: true });
   }
   confirmation.addEventListener('click', (event) => {
     if (event.target.closest('[data-browse-again]')) {
