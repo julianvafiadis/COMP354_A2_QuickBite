@@ -1,3 +1,5 @@
 @import url('./shared/base.css');
 @import url('./restaurants/styles.css');
 @import url('./menu/styles.css');
+@import url('./shopping-cart/styles.css');
+@import url('./orders/styles.css');

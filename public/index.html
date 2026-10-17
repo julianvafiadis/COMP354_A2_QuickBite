@@ -6,6 +6,7 @@
     <meta name="theme-color" content="#254f3d" />
     <title>QuickBite · Good food, on your time</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -62,23 +63,5 @@
       </aside>
     </main>
     <div id="toast" class="toast" role="status" hidden></div>
-    <script type="module">
-      const list = document.querySelector('#restaurant-list');
-      try {
-        const response = await fetch('/api/restaurants');
-        if (!response.ok) throw new Error('Could not load restaurants.');
-        const { restaurants } = await response.json();
-        document.querySelector('#restaurant-count').textContent =
-          restaurants.length + ' restaurants';
-        list.replaceChildren();
-        for (const restaurant of restaurants) {
-          const row = document.createElement('p');
-          row.textContent = restaurant.name + ' - ' + restaurant.cuisine;
-          list.append(row);
-        }
-      } catch (error) {
-        list.textContent = error.message;
-      }
-    </script>
   </body>
 </html>
