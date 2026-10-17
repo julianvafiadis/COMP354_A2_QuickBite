@@ -110,3 +110,4 @@ if (
     console.log(`QuickBite is ready at http://localhost:${port}`),
   );
 }
+
